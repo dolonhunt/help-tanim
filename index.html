@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Support Tanim's Battle Against Cancer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --primary: #1a73e8;
+    --primary-dark: #0d5bb5;
+    --secondary: #d32f2f;
+    --secondary-dark: #b71c1c;
+    --light-bg: #f8fbfd;
+    --card-bg: #ffffff;
+    --text: #1a2a3a;
+    --text-light: #5f6368;
+    --border: #e0e0e0;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --radius: 12px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light-bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .header p {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 400;
+  }
+
+  /* MAIN CONTENT */
+  .container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 1rem auto;
+    }
+  }
+
+  /* LEFT CONTENT */
+  .left-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .left-content {
+      gap: 1.5rem;
+    }
+  }
+
+  /* HERO IMAGE */
+  .hero-image {
+    height: 300px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  @media (max-width: 480px) {
+    .hero-image {
+      height: 200px;
+    }
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* PROGRESS SECTION */
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      padding: 1.2rem;
+    }
+  }
+
+  .goal-box {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .goal-text {
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    color: var(--primary);
+  }
+
+  @media (max-width: 480px) {
+    .goal-text {
+      font-size: 1.1rem;
+    }
+  }
+
+  .progress-container {
+    margin-bottom: 1rem;
+  }
+
+  .progress-bar {
+    background: #e8f1fb;
+    border-radius: 20px;
+    height: 20px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto 0.5rem;
+  }
+
+  .progress {
+    background: linear-gradient(90deg, var(--primary), #00c6ff);
+    height: 100%;
+    width: 0%;
+    border-radius: 20px;
+    transition: width 0.8s ease;
+  }
+
+  .progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+
+  /* STORY SECTION */
+  .story {
+    line-height: 1.7;
+  }
+
+  .story p {
+    margin-bottom: 1.2rem;
+  }
+
+  .story strong {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .read-more {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .read-more i {
+    transition: transform 0.3s;
+  }
+
+  .read-more.active i {
+    transform: rotate(180deg);
+  }
+
+  /* GALLERY SECTION */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 480px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  @media (max-width: 480px) {
+    .gallery img {
+      height: 100px;
+    }
+  }
+
+  .gallery img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+
+  /* RIGHT CONTENT - FORM */
+  .right-content {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+  }
+
+  @media (max-width: 768px) {
+    .right-content {
+      position: static;
+    }
+  }
+
+  .form-section {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+  }
+
+  .amount-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .amount-options {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+  }
+
+  .amount-btn {
+    background: #fff;
+    border: 2px solid var(--border);
+    color: var(--text);
+    padding: 0.8rem 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  @media (max-width: 480px) {
+    .amount-btn {
+      padding: 0.7rem 0.3rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .amount-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  .amount-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  .amount-btn .usd {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    font-weight: 400;
+  }
+
+  @media (max-width: 480px) {
+    .amount-btn .usd {
+      font-size: 0.7rem;
+    }
+  }
+
+  label {
+    display: block;
+    margin-top: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  @media (max-width: 480px) {
+    label {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 0.9rem;
+    margin-top: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border 0.3s;
+  }
+
+  @media (max-width: 480px) {
+    input, select, textarea {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+  }
+
+  .form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 480px) {
+    .form-buttons {
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+  }
+
+  .donate-btn {
+    flex: 2;
+    background: var(--secondary);
+    color: white;
+    font-weight: 600;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 200px;
+  }
+
+  @media (max-width: 480px) {
+    .donate-btn {
+      min-width: 100%;
+      padding: 0.9rem;
+      font-size: 1rem;
+    }
+  }
+
+  .donate-btn:hover {
+    background: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+  }
+
+  .action-buttons {
+    flex: 1;
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    .action-buttons {
+      width: 100%;
+    }
+  }
+
+  .action-btn {
+    flex: 1;
+    background: #f4f4f4;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    min-width: 120px;
+  }
+
+  @media (max-width: 480px) {
+    .action-btn {
+      min-width: auto;
+      padding: 0.7rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .action-btn:hover {
+    background: #e9e9e9;
+    transform: translateY(-2px);
+  }
+
+  .action-btn.share {
+    background: #4285f4;
+    color: white;
+    border-color: #4285f4;
+  }
+
+  .action-btn.share:hover {
+    background: #3367d6;
+  }
+
+  .details {
+    margin-top: 1.5rem;
+    background: #f4f9ff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+  }
+
+  @media (max-width: 480px) {
+    .details {
+      padding: 1.2rem;
+      margin-top: 1.2rem;
+    }
+  }
+
+  .details h4 {
+    margin-bottom: 0.8rem;
+    color: var(--primary);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    background: white;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 480px) {
+    footer {
+      padding: 1.5rem 1rem;
+    }
+  }
+
+  .contact-info {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 480px) {
+    .contact-info {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+  }
+
+  .whatsapp-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25D366;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .whatsapp-contact:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  }
+
+  /* MODALS */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: modalFade 0.3s;
+  }
+
+  @media (max-width: 480px) {
+    .modal-content {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+  }
+
+  @keyframes modalFade {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-content h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .modal-content p {
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+  }
+
+  .close-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+
+  .close-btn:hover {
+    background: var(--primary-dark);
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .lightbox-content {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    background: rgba(0,0,0,0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+  }
+
+  @media (max-width: 480px) {
+    .close-lightbox {
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      font-size: 2rem;
+    }
+  }
+
+  .close-lightbox:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    background: rgba(0,0,0,0.5);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+  }
+
+  @media (max-width: 480px) {
+    .lightbox-nav {
+      width: 45px;
+      height: 45px;
+      font-size: 2rem;
+    }
+  }
+
+  .lightbox-nav:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  .lightbox-prev {
+    left: 30px;
+  }
+
+  @media (max-width: 480px) {
+    .lightbox-prev {
+      left: 15px;
+    }
+  }
+
+  .lightbox-next {
+    right: 30px;
+  }
+
+  @media (max-width: 480px) {
+    .lightbox-next {
+      right: 15px;
+    }
+  }
+
+  .lightbox-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.2rem;
+    background: rgba(0,0,0,0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+
+  /* MOBILE-SPECIFIC IMPROVEMENTS */
+  @media (max-width: 768px) {
+    .header h1 {
+      font-size: 1.5rem;
+    }
+    
+    .header p {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header {
+      padding: 1.2rem 1rem;
+    }
+    
+    .header h1 {
+      font-size: 1.3rem;
+    }
+    
+    .header p {
+      font-size: 0.85rem;
+    }
+    
+    /* Improve touch targets for mobile */
+    .amount-btn, .action-btn, .donate-btn {
+      min-height: 44px; /* Minimum touch target size */
+    }
+    
+    /* Better spacing for mobile */
+    .container {
+      padding: 0 0.8rem;
+    }
+    
+    /* Improve form readability */
+    input, select {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+  }
+
+  /* Extra small devices */
+  @media (max-width: 360px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+    
+    .amount-options {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-info p {
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <h1>Support Tanim's Battle Against Cancer</h1>
+  <p>Your prayers and support can help him win this fight 💙</p>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+  <!-- LEFT CONTENT -->
+  <div class="left-content">
+    <!-- HERO IMAGE -->
+    <div class="hero-image">
+      <img src='https://i.postimg.cc/WzxRgRG5/Tanim-Final.jpg' border='0' alt='Tanim-Final'/>
+    </div>
+
+    <!-- PROGRESS CARD -->
+    <div class="card">
+      <div class="goal-box">
+        <div class="goal-text">Goal: 1,750,000 BDT (~$15,000 USD)</div>
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+          </div>
+          <div class="progress-text">
+            <span id="collectedAmount">Collected: 0 BDT</span>
+            <span id="progressPercent">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY SECTION -->
+    <div class="card">
+      <h2 class="section-title">Tanim's Story</h2>
+      <div class="story">
+        <p>Our dear friend <strong>Muhammed Ashfaque Ahammed Tanim</strong> has been diagnosed with <strong>Mixed Phenotype Acute Leukaemia (MPAL)</strong>, a rare and extremely aggressive form of blood cancer that combines both B cell and T cell types. He is only <strong>22 years old</strong>, with his whole life ahead of him, but right now, he is fighting one of the toughest battles anyone could face.</p>
+        
+        <div id="moreText" style="display:none;">
+          <p>Just three years ago, <strong>Tanim's father passed away</strong>, leaving behind his mother and two sons. His mother is a <strong>breast cancer survivor</strong> who spent all their family's strength, time, and resources on her own treatment. Now, as Tanim begins his fight, this family once again needs our prayers and help.</p>
+          
+          <p>Tanim's elder brother (30 years old) is currently with him at <strong>Fortis Memorial Research Institute, Gurugram (Haryana, Delhi, India)</strong>, where he has been admitted and has already started <strong>intensive chemotherapy</strong> in the Bone Marrow Transplant (BMT) suite. After completing all his reports, including bone marrow aspiration and biopsy, doctors confirmed the diagnosis: <strong>MPAL with 32 percent bone marrow blast count</strong>.</p>
+          
+          <p>The doctors explained that Tanim will need both <strong>intensive chemotherapy and a bone marrow transplant (BMT)</strong>, as there are no alternatives for this condition. <strong>The BMT's success will depend on the matching percentage</strong>.</p>
+          
+          <p>The estimated total cost of Tanim's treatment is around <strong>1 to 1.5 crore BDT</strong>. (BMT's cost depends on the matching percentage.) His family has already faced immense hardship, first his mother's cancer, then his father's passing, and they now need our help and support to continue Tanim's treatment.</p>
+          
+          <p>In this situation, we can do only two things: <strong>pray and help</strong>. Please keep Tanim in your prayers and, if possible, contribute whatever you can. <strong>Every small contribution truly matters</strong>. It could give him the chance to live, to heal, and to hope again.</p>
+          
+          <h3 style="margin-top: 1.5rem; color: var(--primary);">বাংলা</h3>
+          <p>আমাদের প্রিয় বন্ধু <strong>তানিম আক্রান্ত হয়েছে মিক্সড ফিনোটাইপ একিউট লিউকেমিয়া (MPAL)</strong> নামের এক বিরল ও মারাত্মক রক্তের ক্যান্সারে, যেখানে বি সেল ও টি সেল দুই ধরনের ক্যান্সারই একসাথে দেখা দেয়। <strong>মাত্র ২২ বছর বয়সে</strong>, জীবনের শুরুতেই তাকে এক কঠিন লড়াইয়ের মুখোমুখি হতে হয়েছে।</p>
+          
+          <p><strong>মাত্র তিন বছর আগে তানিমের বাবা মারা গেছেন</strong>, রেখে গেছেন মা ও দুই ছেলেকে। তার মা একজন <strong>ব্রেস্ট ক্যান্সার সারভাইভার</strong>, যিনি নিজের চিকিৎসার জন্য পরিবারের অনেক কিছুই ব্যয় করেছেন। এখন তানিমের অসুস্থতার এই সংকটে, পরিবারটি আবারও আমাদের দোয়া ও সহায়তা প্রয়োজন।</p>
+          
+          <p>তানিমের বড় ভাই (৩০ বছর বয়স) এখন ভারতের হারিয়ানার গুরগাঁওয়ের <strong>ফোর্টিস মেমোরিয়াল রিসার্চ ইনস্টিটিউটে</strong> তার সঙ্গে আছেন। সেখানে তানিম হাসপাতালে ভর্তি হয়েছে এবং ইতিমধ্যেই <strong>বোন ম্যারো ট্রান্সপ্লান্ট (BMT) স্যুটে ইনটেনসিভ কেমোথেরাপি</strong> শুরু করেছে। সব রিপোর্ট ও টেস্ট সম্পন্ন করার পর ডাক্তাররা নিশ্চিত করেছেন যে এটি <strong>MPAL লিউকেমিয়া, যেখানে বোন ম্যারো ব্লাস্ট কাউন্ট ৩২ শতাংশ</strong>।</p>
+          
+          <p>ডাক্তারদের মতে, এই ক্যান্সারের চিকিৎসায় <strong>ইনটেনসিভ কেমোথেরাপি ও বোন ম্যারো ট্রান্সপ্লান্ট দুটোই অপরিহার্য</strong>। <strong>বোন ম্যারো ট্রান্সপ্লান্টের সফলতা নির্ভর করবে ম্যাচিংয়ের উপর</strong>।</p>
+          
+          <p>এই চিকিৎসার আনুমানিক খরচ <strong>১ থেকে ১.৫ কোটি টাকা</strong>।(বোন ম্যারো ট্রান্সপ্লান্টের খরচ নির্ভর করবে ম্যাচিংয়ের উপর।) মায়ের ক্যান্সার চিকিৎসা ও বাবার মৃত্যুর পর এই পরিবার ইতিমধ্যেই অনেক কষ্টের মধ্য দিয়ে গেছে, এবং তাদের এখন আমাদের সহায়তা প্রয়োজন তানিমের চিকিৎসা চালিয়ে যেতে।</p>
+          
+          <p>এই মুহূর্তে আমরা যা করতে পারি তা হলো <strong>দোয়া ও সাহায্য</strong>। অনুগ্রহ করে তানিমের জন্য দোয়া করুন এবং যতটা পারেন, সহায়তার হাত বাড়িয়ে দিন। <strong>আপনার সামান্য সহায়তাও তানিমের জীবনের আশার আলো হতে পারে</strong>।</p>
+          
+          <p style="margin-top: 1.5rem; font-weight: 600;">With heartfelt thanks,<br>
+          Hasnain Dolon & Afra Sanjana<br>
+          On behalf of Tanim's Family, Friends and Well-wisher</p>
+          
+          <p style="color: var(--primary); font-weight: 600; margin-top: 1rem;">#HelpTanimFightCancer</p>
+        </div>
+        <button class="read-more" id="readMoreBtn">
+          <span>Read More</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- GALLERY SECTION -->
+    <div class="card">
+      <h2 class="section-title">Gallery 💙</h2>
+      <div class="gallery">
+        <img src="https://i.postimg.cc/CM4pxtnv/sl1.jpg" alt="Tanim Image 1" class="gallery-img">
+        <img src="https://i.postimg.cc/FsqcdT2F/sl02.jpg" alt="Tanim Image 2" class="gallery-img">
+        <img src="https://i.postimg.cc/657cm4Kz/pre01.jpg" alt="Tanim Image 3" class="gallery-img">
+        <img src="https://i.postimg.cc/sfKfN1m2/preo4.jpg" alt="Tanim Image 4" class="gallery-img">
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT CONTENT - FORM -->
+  <div class="right-content">
+    <!-- DONATION FORM CARD -->
+    <div class="card">
+      <h2 class="section-title">Make a Donation</h2>
+      <form id="donationForm">
+        <div class="amount-options">
+          <button type="button" class="amount-btn" data-amount="500">
+            ৳500
+            <span class="usd">~$4.30</span>
+          </button>
+          <button type="button" class="amount-btn" data-amount="1000">
+            ৳1,000
+            <span class="usd">~$8.60</span>
+          </button>
+          <button type="button" class="amount-btn" data-amount="5000">
+            ৳5,000
+            <span class="usd">~$43</span>
+          </button>
+          <button type="button" class="amount-btn" data-amount="10000">
+            ৳10,000
+            <span class="usd">~$86</span>
+          </button>
+          <button type="button" class="amount-btn" data-amount="25000">
+            ৳25,000
+            <span class="usd">~$215</span>
+          </button>
+          <button type="button" class="amount-btn other">
+            Other
+            <span class="usd">Custom amount</span>
+          </button>
+        </div>
+
+        <label for="amountInput">Enter Amount (৳)</label>
+        <input type="number" id="amountInput" min="1" placeholder="1000" required>
+
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Full Name" required>
+
+        <label for="email">Email (optional)</label>
+        <input type="email" id="email" placeholder="example@email.com">
+
+        <label for="method">Payment Method</label>
+        <select id="method" required>
+          <option value="">Select Payment Method</option>
+          <option value="bank">Bank Transfer (Local)</option>
+          <option value="bkash">Bkash</option>
+          <option value="nagad">Nagad</option>
+          <option value="rocket">Rocket</option>
+          <option value="paypal">PayPal (International)</option>
+        </select>
+
+        <div id="detailsBox" class="details" style="display:none;"></div>
+
+        <div class="form-buttons">
+          <button type="submit" class="donate-btn">
+            <i class="fas fa-heart"></i>
+            Donate Now
+          </button>
+          <div class="action-buttons">
+            <button type="button" class="action-btn" id="copyLink">
+              <i class="fas fa-link"></i>
+              Copy Link
+            </button>
+            <button type="button" class="action-btn share" id="shareBtn">
+              <i class="fas fa-share-alt"></i>
+              Share
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- PAYMENT PROOF CARD -->
+    <div class="card">
+      <h2 class="section-title">Upload Payment Proof</h2>
+      <form id="proofForm" enctype="multipart/form-data">
+        <label for="txid">Transaction ID</label>
+        <input type="text" id="txid" placeholder="Enter Transaction ID" required>
+
+        <label for="screenshot">Upload Screenshot (optional)</label>
+        <input type="file" id="screenshot" accept="image/*">
+
+        <button type="submit" class="donate-btn" style="margin-top: 1.5rem;">
+          <i class="fas fa-check-circle"></i>
+          Submit Proof
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>With heartfelt thanks — On behalf of Tanim's family, friends, and well-wishers.</p>
+  <div class="contact-info">
+    <p>Contact us on WhatsApp:</p>
+    <a href="https://wa.me/8801624969288" class="whatsapp-contact" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+      +8801624969288
+    </a>
+  </div>
+</footer>
+
+<!-- THANK YOU MODAL -->
+<div class="modal" id="thankYouModal">
+  <div class="modal-content">
+    <h3>Thank You 💙</h3>
+    <p>Your support and kindness mean the world. Together, we bring hope to Tanim's journey.</p>
+    <button class="close-btn" id="closeModal">Close</button>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <span class="close-lightbox">&times;</span>
+  <div class="lightbox-nav lightbox-prev">
+    <i class="fas fa-chevron-left"></i>
+  </div>
+  <div class="lightbox-nav lightbox-next">
+    <i class="fas fa-chevron-right"></i>
+  </div>
+  <img class="lightbox-content" id="lightboxImg">
+  <div class="lightbox-counter">
+    <span id="currentImage">1</span> / <span id="totalImages">4</span>
+  </div>
+</div>
+
+<script>
+const GOAL = 1750000;
+let totalCollected = 350000; // Starting with some initial amount for demo
+
+const progress = document.getElementById('progress');
+const collectedAmount = document.getElementById('collectedAmount');
+const progressPercent = document.getElementById('progressPercent');
+const readMoreBtn = document.getElementById('readMoreBtn');
+const moreText = document.getElementById('moreText');
+const thankYouModal = document.getElementById('thankYouModal');
+const closeModal = document.getElementById('closeModal');
+const methodSelect = document.getElementById('method');
+const detailsBox = document.getElementById('detailsBox');
+const amountBtns = document.querySelectorAll('.amount-btn');
+const amountInput = document.getElementById('amountInput');
+const copyLink = document.getElementById('copyLink');
+const shareBtn = document.getElementById('shareBtn');
+
+// Lightbox variables
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const closeLightbox = document.querySelector('.close-lightbox');
+const lightboxPrev = document.querySelector('.lightbox-prev');
+const lightboxNext = document.querySelector('.lightbox-next');
+const currentImage = document.getElementById('currentImage');
+const totalImages = document.getElementById('totalImages');
+const galleryImages = document.querySelectorAll('.gallery-img');
+let currentImageIndex = 0;
+
+// Initialize progress
+function updateProgress() {
+  const percent = Math.min((totalCollected / GOAL) * 100, 100).toFixed(1);
+  progress.style.width = percent + '%';
+  collectedAmount.textContent = `Collected: ${totalCollected.toLocaleString()} BDT`;
+  progressPercent.textContent = `${percent}%`;
+}
+
+// Thank You Modal
+function showThankYouModal() {
+  thankYouModal.style.display = 'flex';
+}
+
+closeModal.addEventListener('click', () => thankYouModal.style.display = 'none');
+window.addEventListener('click', e => { 
+  if (e.target === thankYouModal) thankYouModal.style.display = 'none'; 
+});
+
+// Read More toggle
+readMoreBtn.addEventListener('click', () => {
+  if (moreText.style.display === 'none') {
+    moreText.style.display = 'block';
+    readMoreBtn.innerHTML = '<span>Read Less</span> <i class="fas fa-chevron-up"></i>';
+    readMoreBtn.classList.add('active');
+  } else {
+    moreText.style.display = 'none';
+    readMoreBtn.innerHTML = '<span>Read More</span> <i class="fas fa-chevron-down"></i>';
+    readMoreBtn.classList.remove('active');
+  }
+});
+
+// Payment Details
+const paymentInfo = {
+  bank: `
+    <h4>Bank Transfer Details</h4>
+    <p><strong>Dutch Bangla Bank PLC</strong><br>
+    Account Number: 1481030338803<br>
+    Name: Gazi Hasanain Islam<br>
+    Branch: Shymoli<br>
+    Routing Number: 090263978</p>
+  `,
+  bkash: `
+    <h4>Bkash Payment Details</h4>
+    <p><strong>Afra Sanjana</strong><br>
+    01682077401 (Personal)</p>
+  `,
+  nagad: `
+    <h4>Nagad Payment Details</h4>
+    <p><strong>Gazi Hasanain Islam</strong><br>
+    01763704960 (Personal)</p>
+  `,
+  rocket: `
+    <h4>Rocket Payment Details</h4>
+    <p><strong>Afra Sanjana</strong><br>
+    016820774014 (Personal)</p>
+  `,
+  paypal: `
+    <h4>PayPal (International)</h4>
+    <p>You'll be redirected to our PayPal page for international donations.</p>
+    <a href="https://www.paypal.com/ncp/payment/FMHY57SFG8CHA" target="_blank" style="color:var(--primary); text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:0.5rem;">
+      Go to PayPal Page <i class="fas fa-external-link-alt"></i>
+    </a>
+  `
+};
+
+// Amount buttons
+amountBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    amountBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const value = btn.dataset.amount;
+    if (btn.classList.contains('other')) {
+      amountInput.value = '';
+      amountInput.focus();
+    } else {
+      amountInput.value = value;
+    }
+  });
+});
+
+// Copy Link
+copyLink.addEventListener('click', () => {
+  navigator.clipboard.writeText(window.location.href);
+  const originalText = copyLink.innerHTML;
+  copyLink.innerHTML = '<i class="fas fa-check"></i> Copied!';
+  setTimeout(() => {
+    copyLink.innerHTML = originalText;
+  }, 2000);
+});
+
+// Share functionality
+shareBtn.addEventListener('click', () => {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Support Tanim\'s Battle Against Cancer',
+      text: 'Please help support Tanim in his fight against leukemia. Every donation helps!',
+      url: window.location.href,
+    })
+    .catch(err => console.log('Error sharing:', err));
+  } else {
+    // Fallback for browsers that don't support Web Share API
+    navigator.clipboard.writeText(window.location.href);
+    const originalText = shareBtn.innerHTML;
+    shareBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    setTimeout(() => {
+      shareBtn.innerHTML = originalText;
+    }, 2000);
+  }
+});
+
+// Show payment details on select
+methodSelect.addEventListener('change', e => {
+  const method = e.target.value;
+  if (paymentInfo[method]) {
+    detailsBox.style.display = 'block';
+    detailsBox.innerHTML = paymentInfo[method];
+  } else {
+    detailsBox.style.display = 'none';
+  }
+});
+
+// Donation form submit
+document.getElementById('donationForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const amount = parseInt(amountInput.value.trim());
+  if (!amount) return alert('Please enter donation amount.');
+  
+  // If PayPal is selected, redirect
+  if (methodSelect.value === 'paypal') {
+    window.open('https://www.paypal.com/ncp/payment/FMHY57SFG8CHA', '_blank');
+    return;
+  }
+  
+  totalCollected += amount;
+  updateProgress();
+  e.target.reset();
+  detailsBox.style.display = 'none';
+  amountBtns.forEach(b => b.classList.remove('active'));
+  showThankYouModal();
+});
+
+// Payment proof form submit
+document.getElementById('proofForm').addEventListener('submit', e => {
+  e.preventDefault();
+  showThankYouModal();
+  e.target.reset();
+});
+
+// Initialize progress on page load
+updateProgress();
+
+// LIGHTBOX FUNCTIONALITY
+function openLightbox(index) {
+  currentImageIndex = index;
+  updateLightboxImage();
+  lightbox.style.display = 'flex';
+  document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+function updateLightboxImage() {
+  lightboxImg.src = galleryImages[currentImageIndex].src;
+  lightboxImg.alt = galleryImages[currentImageIndex].alt;
+  currentImage.textContent = currentImageIndex + 1;
+  totalImages.textContent = galleryImages.length;
+}
+
+function nextImage() {
+  currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+  updateLightboxImage();
+}
+
+function prevImage() {
+  currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+  updateLightboxImage();
+}
+
+function closeLightboxFunc() {
+  lightbox.style.display = 'none';
+  document.body.style.overflow = 'auto'; // Re-enable scrolling
+}
+
+// Gallery image click events
+galleryImages.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    openLightbox(index);
+  });
+});
+
+// Lightbox navigation
+closeLightbox.addEventListener('click', closeLightboxFunc);
+lightboxNext.addEventListener('click', nextImage);
+lightboxPrev.addEventListener('click', prevImage);
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (lightbox.style.display === 'flex') {
+    if (e.key === 'Escape') {
+      closeLightboxFunc();
+    } else if (e.key === 'ArrowRight') {
+      nextImage();
+    } else if (e.key === 'ArrowLeft') {
+      prevImage();
+    }
+  }
+});
+
+// Touch swipe for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+lightbox.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+lightbox.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const swipeThreshold = 50;
+  
+  if (touchEndX < touchStartX - swipeThreshold) {
+    // Swipe left - next image
+    nextImage();
+  } else if (touchEndX > touchStartX + swipeThreshold) {
+    // Swipe right - previous image
+    prevImage();
+  }
+}
+
+// Close lightbox when clicking on the background
+window.addEventListener('click', (e) => {
+  if (e.target === lightbox) {
+    closeLightboxFunc();
+  }
+});
+
+// Mobile-specific optimizations
+document.addEventListener('DOMContentLoaded', function() {
+  // Prevent zoom on input focus for mobile
+  const inputs = document.querySelectorAll('input, select, textarea');
+  inputs.forEach(input => {
+    input.addEventListener('focus', function() {
+      this.style.fontSize = '16px'; // Prevents zoom on iOS
+    });
+  });
+});
+</script>
+
+</body>
+</html>
