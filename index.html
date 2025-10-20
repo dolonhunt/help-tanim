@@ -182,9 +182,9 @@
   }
 
   .story strong {
-  color: #000000; /* Changed to black */
-  font-weight: 700;
-}
+    color: #000000;
+    font-weight: 700;
+  }
 
   .read-more {
     background: none;
@@ -241,6 +241,27 @@
   .gallery img:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+
+  /* MEDICAL DOCUMENTS BUTTON */
+  .medical-docs-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-top: 1rem;
+  }
+
+  .medical-docs-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
   }
 
   /* RIGHT CONTENT - FORM */
@@ -313,12 +334,13 @@
     flex-direction: column;
     align-items: center;
     gap: 0.3rem;
+    font-size: 17px; /* Increased font size */
   }
 
   @media (max-width: 480px) {
     .amount-btn {
       padding: 0.7rem 0.3rem;
-      font-size: 0.9rem;
+      font-size: 16px; /* Slightly smaller on mobile */
     }
   }
 
@@ -499,6 +521,28 @@
   .details h4 {
     margin-bottom: 0.8rem;
     color: var(--primary);
+  }
+
+  /* LOADING SPINNER */
+  .loading {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto 1rem;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
   /* FOOTER */
@@ -762,7 +806,7 @@
     
     /* Improve touch targets for mobile */
     .amount-btn, .action-btn, .donate-btn {
-      min-height: 44px; /* Minimum touch target size */
+      min-height: 44px;
     }
     
     /* Better spacing for mobile */
@@ -772,7 +816,7 @@
     
     /* Improve form readability */
     input, select {
-      font-size: 16px; /* Prevents zoom on iOS */
+      font-size: 16px;
     }
   }
 
@@ -812,7 +856,7 @@
     <!-- PROGRESS CARD -->
     <div class="card">
       <div class="goal-box">
-        <div class="goal-text">Goal: 1,750,000 BDT (~$15,000 USD)</div>
+        <div class="goal-text">Goal: 2,450,000 BDT (~$20,000 USD)</div>
         <div class="progress-container">
           <div class="progress-bar">
             <div class="progress" id="progress"></div>
@@ -874,9 +918,15 @@
       <div class="gallery">
         <img src="https://i.postimg.cc/CM4pxtnv/sl1.jpg" alt="Tanim Image 1" class="gallery-img">
         <img src="https://i.postimg.cc/FsqcdT2F/sl02.jpg" alt="Tanim Image 2" class="gallery-img">
-        <img src="https://i.postimg.cc/657cm4Kz/pre01.jpg" alt="Tanim Image 3" class="gallery-img">
-        <img src="https://i.postimg.cc/sfKfN1m2/preo4.jpg" alt="Tanim Image 4" class="gallery-img">
+        <img src="https://i.postimg.cc/KcDwRRJx/medical.jpg" alt="Tanim Image 3" class="gallery-img">
+        
       </div>
+      
+      <!-- MEDICAL DOCUMENTS BUTTON -->
+      <a href="https://drive.google.com/drive/folders/1w7Xl0NSRdOc31Vg5ZZ_-EOSKSO7HNgnL" class="medical-docs-btn" target="_blank">
+        <i class="fas fa-file-medical"></i>
+        View Medical Documents
+      </a>
     </div>
   </div>
 
@@ -885,7 +935,10 @@
     <!-- DONATION FORM CARD -->
     <div class="card">
       <h2 class="section-title">Make a Donation</h2>
-      <form id="donationForm" netlify>
+      <form id="donationForm" action="https://formspree.io/f/mblzbboy" method="POST">
+        <input type="hidden" name="_subject" value="New Donation for Tanim">
+        <input type="hidden" name="_replyto" id="replyEmail">
+        
         <div class="amount-options">
           <button type="button" class="amount-btn" data-amount="500">
             ৳500
@@ -914,16 +967,16 @@
         </div>
 
         <label for="amountInput">Enter Amount (৳)</label>
-        <input type="number" id="amountInput" min="1" placeholder="1000" required>
+        <input type="number" id="amountInput" name="amount" min="1" placeholder="1000" required>
 
         <label for="name">Your Name</label>
-        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="text" id="name" name="name" placeholder="Full Name" required>
 
         <label for="email">Email (optional)</label>
-        <input type="email" id="email" placeholder="example@email.com">
+        <input type="email" id="email" name="email" placeholder="example@email.com">
 
         <label for="method">Payment Method</label>
-        <select id="method" required>
+        <select id="method" name="payment_method" required>
           <option value="">Select Payment Method</option>
           <option value="bank">Bank Transfer (Local)</option>
           <option value="bkash">Bkash</option>
@@ -931,11 +984,25 @@
           <option value="rocket">Rocket</option>
           <option value="paypal">PayPal (International)</option>
         </select>
+        
+         <label for="transactionPhone">Transaction ID / Phone Number *</label>
+        <input type="text" id="transactionPhone" name="transaction_phone" placeholder="Transaction ID or Phone Number" required>
+
+        <label for="screenshot">Upload Payment Proof (optional)</label>
+        <input type="file" id="screenshot" name="screenshot" accept="image/*">
+
+        <label for="message">Message (optional)</label>
+        <textarea id="message" name="message" placeholder="Your message of support..." rows="3"></textarea>
 
         <div id="detailsBox" class="details" style="display:none;"></div>
 
+        <div class="loading" id="formLoading">
+          <div class="spinner"></div>
+          <p>Submitting your donation...</p>
+        </div>
+
         <div class="form-buttons">
-          <button type="submit" class="donate-btn">
+          <button type="submit" class="donate-btn" id="submitBtn">
             <i class="fas fa-heart"></i>
             Donate Now
           </button>
@@ -950,23 +1017,6 @@
             </button>
           </div>
         </div>
-      </form>
-    </div>
-
-    <!-- PAYMENT PROOF CARD -->
-    <div class="card">
-      <h2 class="section-title">Upload Payment Proof</h2>
-      <form id="proofForm" netlify enctype="multipart/form-data">
-        <label for="txid">Transaction ID</label>
-        <input type="text" id="txid" placeholder="Enter Transaction ID" required>
-
-        <label for="screenshot">Upload Screenshot (optional)</label>
-        <input type="file" id="screenshot" accept="image/*">
-
-        <button type="submit" class="donate-btn" style="margin-top: 1.5rem;">
-          <i class="fas fa-check-circle"></i>
-          Submit Proof
-        </button>
       </form>
     </div>
   </div>
@@ -1009,7 +1059,7 @@
 
 <script>
 const GOAL = 1750000;
-let totalCollected = 350000; // Starting with some initial amount for demo
+let totalCollected = 350000;
 
 const progress = document.getElementById('progress');
 const collectedAmount = document.getElementById('collectedAmount');
@@ -1024,17 +1074,8 @@ const amountBtns = document.querySelectorAll('.amount-btn');
 const amountInput = document.getElementById('amountInput');
 const copyLink = document.getElementById('copyLink');
 const shareBtn = document.getElementById('shareBtn');
-
-// Lightbox variables
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const closeLightbox = document.querySelector('.close-lightbox');
-const lightboxPrev = document.querySelector('.lightbox-prev');
-const lightboxNext = document.querySelector('.lightbox-next');
-const currentImage = document.getElementById('currentImage');
-const totalImages = document.getElementById('totalImages');
-const galleryImages = document.querySelectorAll('.gallery-img');
-let currentImageIndex = 0;
+const formLoading = document.getElementById('formLoading');
+const submitBtn = document.getElementById('submitBtn');
 
 // Initialize progress
 function updateProgress() {
@@ -1136,7 +1177,6 @@ shareBtn.addEventListener('click', () => {
     })
     .catch(err => console.log('Error sharing:', err));
   } else {
-    // Fallback for browsers that don't support Web Share API
     navigator.clipboard.writeText(window.location.href);
     const originalText = shareBtn.innerHTML;
     shareBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
@@ -1158,8 +1198,9 @@ methodSelect.addEventListener('change', e => {
 });
 
 // Donation form submit
-document.getElementById('donationForm').addEventListener('submit', e => {
+document.getElementById('donationForm').addEventListener('submit', async (e) => {
   e.preventDefault();
+  
   const amount = parseInt(amountInput.value.trim());
   if (!amount) return alert('Please enter donation amount.');
   
@@ -1169,19 +1210,46 @@ document.getElementById('donationForm').addEventListener('submit', e => {
     return;
   }
   
-  totalCollected += amount;
-  updateProgress();
-  e.target.reset();
-  detailsBox.style.display = 'none';
-  amountBtns.forEach(b => b.classList.remove('active'));
-  showThankYouModal();
-});
-
-// Payment proof form submit
-document.getElementById('proofForm').addEventListener('submit', e => {
-  e.preventDefault();
-  showThankYouModal();
-  e.target.reset();
+  // Show loading
+  formLoading.style.display = 'block';
+  submitBtn.disabled = true;
+  
+  try {
+    // Set reply-to email
+    const emailInput = document.getElementById('email');
+    if (emailInput.value) {
+      document.getElementById('replyEmail').value = emailInput.value;
+    }
+    
+    // Submit to Formspree
+    const formData = new FormData(e.target);
+    
+    const response = await fetch(e.target.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (response.ok) {
+      // Success
+      totalCollected += amount;
+      updateProgress();
+      e.target.reset();
+      detailsBox.style.display = 'none';
+      amountBtns.forEach(b => b.classList.remove('active'));
+      showThankYouModal();
+    } else {
+      throw new Error('Form submission failed');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('There was an error submitting your donation. Please try again or contact us directly.');
+  } finally {
+    formLoading.style.display = 'none';
+    submitBtn.disabled = false;
+  }
 });
 
 // Initialize progress on page load
@@ -1192,7 +1260,7 @@ function openLightbox(index) {
   currentImageIndex = index;
   updateLightboxImage();
   lightbox.style.display = 'flex';
-  document.body.style.overflow = 'hidden'; // Prevent scrolling
+  document.body.style.overflow = 'hidden';
 }
 
 function updateLightboxImage() {
@@ -1214,10 +1282,13 @@ function prevImage() {
 
 function closeLightboxFunc() {
   lightbox.style.display = 'none';
-  document.body.style.overflow = 'auto'; // Re-enable scrolling
+  document.body.style.overflow = 'auto';
 }
 
 // Gallery image click events
+const galleryImages = document.querySelectorAll('.gallery-img');
+let currentImageIndex = 0;
+
 galleryImages.forEach((img, index) => {
   img.addEventListener('click', () => {
     openLightbox(index);
@@ -1225,6 +1296,14 @@ galleryImages.forEach((img, index) => {
 });
 
 // Lightbox navigation
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const closeLightbox = document.querySelector('.close-lightbox');
+const lightboxPrev = document.querySelector('.lightbox-prev');
+const lightboxNext = document.querySelector('.lightbox-next');
+const currentImage = document.getElementById('currentImage');
+const totalImages = document.getElementById('totalImages');
+
 closeLightbox.addEventListener('click', closeLightboxFunc);
 lightboxNext.addEventListener('click', nextImage);
 lightboxPrev.addEventListener('click', prevImage);
@@ -1259,10 +1338,8 @@ function handleSwipe() {
   const swipeThreshold = 50;
   
   if (touchEndX < touchStartX - swipeThreshold) {
-    // Swipe left - next image
     nextImage();
   } else if (touchEndX > touchStartX + swipeThreshold) {
-    // Swipe right - previous image
     prevImage();
   }
 }
@@ -1276,18 +1353,14 @@ window.addEventListener('click', (e) => {
 
 // Mobile-specific optimizations
 document.addEventListener('DOMContentLoaded', function() {
-  // Prevent zoom on input focus for mobile
   const inputs = document.querySelectorAll('input, select, textarea');
   inputs.forEach(input => {
     input.addEventListener('focus', function() {
-      this.style.fontSize = '16px'; // Prevents zoom on iOS
+      this.style.fontSize = '16px';
     });
   });
 });
 </script>
 
 </body>
-
 </html>
-
-
