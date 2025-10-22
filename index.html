@@ -334,13 +334,13 @@
     flex-direction: column;
     align-items: center;
     gap: 0.3rem;
-    font-size: 17px; /* Increased font size */
+    font-size: 17px;
   }
 
   @media (max-width: 480px) {
     .amount-btn {
       padding: 0.7rem 0.3rem;
-      font-size: 16px; /* Slightly smaller on mobile */
+      font-size: 16px;
     }
   }
 
@@ -521,6 +521,34 @@
   .details h4 {
     margin-bottom: 0.8rem;
     color: var(--primary);
+  }
+
+  .bank-details {
+    margin-bottom: 1.5rem;
+  }
+
+  .bank-details:last-child {
+    margin-bottom: 0;
+  }
+
+  .bank-details h5 {
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .bank-details p {
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  .bank-note {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 0.8rem;
+    margin-top: 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
   }
 
   /* LOADING SPINNER */
@@ -780,6 +808,153 @@
     border-radius: 20px;
   }
 
+  /* GOFUNDME DONATIONS BUTTON */
+  .gofundme-donations-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #00b140;
+    color: white;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .gofundme-donations-btn:hover {
+    background: #00a140;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 177, 64, 0.3);
+  }
+
+  /* GOFUNDME DONATIONS MODAL */
+  .gofundme-donations-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    padding: 1rem;
+  }
+
+  .gofundme-donations-modal-content {
+    background: white;
+    border-radius: var(--radius);
+    max-width: 450px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalFade 0.3s;
+  }
+
+  .gofundme-donations-modal-header {
+    background: linear-gradient(135deg, #00b140, #00a140);
+    color: white;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  .gofundme-donations-modal-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .close-donations-modal {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .close-donations-modal:hover {
+    background: rgba(255,255,255,0.3);
+  }
+
+  .gofundme-donations-modal-body {
+    padding: 1.5rem;
+  }
+
+  .donations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .donation-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+
+  .donation-item:hover {
+    background: #f0f7ff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .donation-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .donation-name {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .donation-time {
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+
+  .donation-amount {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+  }
+
+  .no-donations {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+  }
+
+  .no-donations i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--border);
+  }
+
   /* MOBILE-SPECIFIC IMPROVEMENTS */
   @media (max-width: 768px) {
     .header h1 {
@@ -805,7 +980,7 @@
     }
     
     /* Improve touch targets for mobile */
-    .amount-btn, .action-btn, .donate-btn {
+    .amount-btn, .action-btn, .donate-btn, .gofundme-donations-btn {
       min-height: 44px;
     }
     
@@ -856,7 +1031,7 @@
     <!-- PROGRESS CARD -->
     <div class="card">
       <div class="goal-box">
-        <div class="goal-text">Goal: 2,450,000 BDT (~$20,000 USD)</div>
+        <div class="goal-text">Goal: 2,687,300 BDT (~$22,000 USD)</div>
         <div class="progress-container">
           <div class="progress-bar">
             <div class="progress" id="progress"></div>
@@ -916,10 +1091,9 @@
     <div class="card">
       <h2 class="section-title">Gallery 💙</h2>
       <div class="gallery">
-        <img src="https://i.postimg.cc/CM4pxtnv/sl1.jpg" alt="Tanim Image 1" class="gallery-img">
+     <img src="https://i.postimg.cc/CM4pxtnv/sl1.jpg" alt="Tanim Image 1" class="gallery-img">
         <img src="https://i.postimg.cc/FsqcdT2F/sl02.jpg" alt="Tanim Image 2" class="gallery-img">
         <img src="https://i.postimg.cc/KcDwRRJx/medical.jpg" alt="Tanim Image 3" class="gallery-img">
-        
       </div>
       
       <!-- MEDICAL DOCUMENTS BUTTON -->
@@ -974,26 +1148,25 @@
 
         <label for="email">Email (optional)</label>
         <input type="email" id="email" name="email" placeholder="example@email.com">
-
-        <label for="method">Payment Method</label>
+  <label for="method">Payment Method</label>
         <select id="method" name="payment_method" required>
           <option value="">Select Payment Method</option>
           <option value="bank">Bank Transfer (Local)</option>
           <option value="bkash">Bkash</option>
           <option value="nagad">Nagad</option>
           <option value="rocket">Rocket</option>
+          <option value="bank_international">Bank Transfer (International)</option>
           <option value="paypal">PayPal (International)</option>
         </select>
-         <div id="detailsBox" class="details" style="display:none;"></div>
-         <label for="transactionPhone">Transaction ID / Phone Number *</label>
-        <input type="text" id="transactionPhone" name="transaction_phone" placeholder="Transaction ID or Phone Number" required>
+<div id="detailsBox" class="details" style="display:none;"></div>
 
-        <label for="screenshot">Upload Payment Proof (optional)</label>
-        <input type="file" id="screenshot" name="screenshot" accept="image/*">
+        <label for="transactionPhone">Transaction ID / Phone Number *</label>
+        <input type="text" id="transactionPhone" name="transaction_phone" placeholder="Transaction ID or Phone Number" required>
 
         <label for="message">Message (optional)</label>
         <textarea id="message" name="message" placeholder="Your message of support..." rows="3"></textarea>
 
+        
         <div class="loading" id="formLoading">
           <div class="spinner"></div>
           <p>Submitting your donation...</p>
@@ -1016,6 +1189,12 @@
           </div>
         </div>
       </form>
+
+      <!-- GOFUNDME DONATIONS BUTTON -->
+      <button class="gofundme-donations-btn" id="gofundmeDonationsBtn">
+        <i class="fas fa-history"></i>
+        View Recent Donations
+      </button>
     </div>
   </div>
 </div>
@@ -1040,6 +1219,70 @@
   </div>
 </div>
 
+<!-- GOFUNDME DONATIONS MODAL -->
+<div class="gofundme-donations-modal" id="gofundmeDonationsModal">
+  <div class="gofundme-donations-modal-content">
+    <div class="gofundme-donations-modal-header">
+      <h3><i class="fas fa-donate"></i> Recent Donations</h3>
+      <button class="close-donations-modal" id="closeDonationsModal">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="gofundme-donations-modal-body">
+      <div class="donations-list">
+        <div class="donation-item">
+          <div class="donation-details">
+            <div class="donation-name">Anonymous</div>
+            <div class="donation-time">2 hours ago</div>
+          </div>
+          <div class="donation-amount">$50</div>
+        </div>
+        
+        <div class="donation-item">
+          <div class="donation-details">
+            <div class="donation-name">Anonymous</div>
+            <div class="donation-time">5 hours ago</div>
+          </div>
+          <div class="donation-amount">$100</div>
+        </div>
+        
+        <div class="donation-item">
+          <div class="donation-details">
+            <div class="donation-name">Anonymous</div>
+            <div class="donation-time">6 hours ago</div>
+          </div>
+          <div class="donation-amount">$14</div>
+        </div>
+        
+        <div class="donation-item">
+          <div class="donation-details">
+            <div class="donation-name">Anonymous</div>
+            <div class="donation-time">10 hours ago</div>
+          </div>
+          <div class="donation-amount">$6</div>
+        </div>
+        
+        <div class="donation-item">
+          <div class="donation-details">
+            <div class="donation-name">Anonymous</div>
+            <div class="donation-time">1 day ago</div>
+          </div>
+          <div class="donation-amount">$1,000</div>
+        </div>
+        
+        <div class="donation-item">
+          <div class="donation-details">
+            <div class="donation-name">Anonymous</div>
+            <div class="donation-time">1 day ago</div>
+          </div>
+          <div class="donation-amount">$50</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- LIGHTBOX -->
 <div id="lightbox" class="lightbox">
   <span class="close-lightbox">&times;</span>
@@ -1056,8 +1299,8 @@
 </div>
 
 <script>
-const GOAL = 1750000;
-let totalCollected = 350000;
+const GOAL = 2687300;
+let totalCollected = 1487787;
 
 const progress = document.getElementById('progress');
 const collectedAmount = document.getElementById('collectedAmount');
@@ -1130,6 +1373,38 @@ const paymentInfo = {
     <h4>Rocket Payment Details</h4>
     <p><strong>Afra Sanjana</strong><br>
     016820774014 (Personal)</p>
+  `,
+  bank_international: `
+    <h4>International Bank Transfer Details</h4>
+    
+    <div class="bank-details">
+      <h5>EUR Bank Details</h5>
+      <p><strong>Name:</strong> Afra Sanjana</p>
+      <p><strong>IBAN:</strong> BE82 9673 3688 1568</p>
+      <p><strong>Swift/BIC:</strong> TRWIBEB1XXX</p>
+      <div class="bank-note">
+        <strong>Use when sending money from outside SEPA</strong><br>
+        Bank name and address:<br>
+        Wise, Rue du Trône 100, 3rd floor, Brussels, 1050, Belgium
+      </div>
+    </div>
+    
+    <div class="bank-details">
+      <h5>GBP Bank Details</h5>
+      <p><strong>Name:</strong> Afra Sanjana</p>
+      <p><strong>Account number:</strong> 14455821</p>
+      <p><strong>Sort code:</strong> 23-14-70</p>
+      <div class="bank-note">
+        <strong>Use when sending money from the UK</strong>
+      </div>
+      <p><strong>IBAN:</strong> GB70 TRWI 2314 7014 4558 21</p>
+      <p><strong>Swift/BIC:</strong> TRWIGB2LXXX</p>
+      <div class="bank-note">
+        <strong>Use when sending money from outside the UK</strong><br>
+        Bank name and address:<br>
+        Wise Payments Limited, 1st Floor, Worship Square, 65 Clifton Street, London, EC2A 4JE, United Kingdom
+      </div>
+    </div>
   `,
   paypal: `
     <h4>PayPal (International)</h4>
@@ -1250,6 +1525,41 @@ document.getElementById('donationForm').addEventListener('submit', async (e) => 
   }
 });
 
+// GoFundMe Donations Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const donationsModal = document.getElementById('gofundmeDonationsModal');
+  const donationsBtn = document.getElementById('gofundmeDonationsBtn');
+  const closeDonationsModal = document.getElementById('closeDonationsModal');
+  
+  // Open modal when button is clicked
+  donationsBtn.addEventListener('click', function() {
+    donationsModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+  
+  // Close modal when X is clicked
+  closeDonationsModal.addEventListener('click', function() {
+    donationsModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  });
+  
+  // Close modal when clicking outside
+  window.addEventListener('click', function(e) {
+    if (e.target === donationsModal) {
+      donationsModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+  
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && donationsModal.style.display === 'flex') {
+      donationsModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+});
+
 // Initialize progress on page load
 updateProgress();
 
@@ -1362,4 +1672,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
-
